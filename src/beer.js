@@ -1,20 +1,17 @@
-import {Parent} from 'aurelia-framework';
-import {Router} from 'aurelia-router';
+import {BeersApi} from './beers-api';
 
 export class Beer {
   static inject() {
-    return [Parent.of(Router)];
+    return [BeersApi];
   }
 
-  constructor(router) {
-    this.router = router;
+  constructor(beersApi) {
+    this.beersApi = beersApi;
   }
 
-  canActivate(params) {
-    this.beerId = Number(params.id);
-
-    if (Number.isNaN(this.beerId)) {
-      return false; // refuse activation
-    }
+  activate(params) {
+    return this.beersApi.fetch(params.id).then(beer => {
+      this.beer = beer;
+    });
   }
 }

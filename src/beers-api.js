@@ -14,10 +14,14 @@ export class BeersApi {
   }
 
   fetchAll() {
-    return beers;
+    return new Promise(resolve => {
+      resolve(beers);
+    });
   }
 
   fetch(id) {
-    return beers.find(beer => beer.id === id);
+    return new Promise(resolve => {
+      resolve(beers.find(beer => beer.id == id));
+    });
   }
 }

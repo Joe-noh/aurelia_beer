@@ -6,7 +6,7 @@
       <div class="three columns">
         <ul>
           <li repeat.for="beer of beers">
-            <a href="#" click.bind="$parent">${beer.name}</a>
+            <a href="#" click.delegate="$parent.selectBeer(beer)">${beer.name}</a>
           </li>
         </ul>
       </div>

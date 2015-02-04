@@ -20,6 +20,12 @@ export class App {
   }
 
   activate() {
-    this.beers = this.beersApi.fetchAll();
+    return this.beersApi.fetchAll().then(beers => {
+      this.beers = beers;
+    });
+  }
+
+  selectBeer(beer) {
+    this.router.navigate('beers/' + beer.id);
   }
 }
