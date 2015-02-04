@@ -1,17 +1,17 @@
 import {HttpClient} from 'aurelia-http-client';
-
-let baseUrl = 'http://api.openbeerdatabase.com';
+import {BeersApi} from './beers-api';
 
 export class Beers {
-  static inject() { return [HttpClient]; }
+  static inject() { return [HttpClient, BeersApi]; }
 
-  constructor(http) {
+  constructor(http, beersApi) {
     this.heading = 'Beer!';
-    this.beers = [{name: "asahi"}];
+    this.beers = [];
     this.http = http;
+    this.beersApi = beersApi;
   }
 
   activate() {
-    console.log('beers activated');
+    this.beers = this.beersApi.fetchAll();
   }
 }

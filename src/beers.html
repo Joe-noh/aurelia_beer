@@ -2,8 +2,13 @@
   <h1>${heading}</h1>
 
   <div class="row">
-    <ul>
-      <li repeat.for="beer of beers">${beer.name}</li>
-    </ul>
+    <div class="three columns">
+      <ul>
+        <li repeat.for="beer of beers"><a href="beer/${beer.id}">${beer.name}</a></li>
+      </ul>
+    </div>
+    <div class="nine columns">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
