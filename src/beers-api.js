@@ -1,10 +1,6 @@
 import {HttpClient} from 'aurelia-http-client';
 
-var beers = [
-  {id: 1, name: 'Asahi Super Dry', description: 'good'},
-  {id: 2, name: 'Kirin Ichiban-Shibori', description: 'okay'},
-  {id: 3, name: 'Suntory The Premium Malts', description: 'awesome'}
-];
+let baseUrl = 'http://api.openbeerdatabase.com/v1/';
 
 export class BeersApi {
   static inject() { return [HttpClient]; }
@@ -14,14 +10,10 @@ export class BeersApi {
   }
 
   fetchAll() {
-    return new Promise(resolve => {
-      resolve(beers);
-    });
+    return this.http.jsonp(`${baseUrl}beers.json`, 'callback');
   }
 
   fetch(id) {
-    return new Promise(resolve => {
-      resolve(beers.find(beer => beer.id == id));
-    });
+    return this.http.jsonp(`${baseUrl}beers/${id}.json`, 'callback');
   }
 }
