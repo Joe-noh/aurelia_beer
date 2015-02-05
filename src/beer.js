@@ -10,8 +10,8 @@ export class Beer {
   }
 
   activate(params) {
-    return this.beersApi.fetch(params.id).then(beer => {
-      this.beer = beer;
+    return this.beersApi.fetch(params.id).then(response => {
+      this.beer = response.content;
     });
   }
 }

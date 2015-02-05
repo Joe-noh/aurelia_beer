@@ -20,8 +20,8 @@ export class App {
   }
 
   activate() {
-    return this.beersApi.fetchAll().then(beers => {
-      this.beers = beers;
+    return this.beersApi.fetchAll().then(response => {
+      this.beers = response.content.beers;
     });
   }
 
