@@ -1,0 +1,18 @@
+<template>
+  <div class="container">
+    <h1>Beer!</h1>
+
+    <div class="row">
+      <div class="three columns">
+        <ul>
+          <li repeat.for="beer of beers">
+            <a href="#" click.delegate="$parent.selectBeer(beer)">${beer.name}</a>
+          </li>
+        </ul>
+      </div>
+      <div class="nine columns">
+        <router-view></router-view>
+      </div>
+    </div>
+  </div>
+</template>
